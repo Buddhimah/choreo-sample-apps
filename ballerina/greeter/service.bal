@@ -17,6 +17,10 @@
 
 import ballerina/http;
 
+type RiskResponse record {
+boolean hasRisk;
+};
+
 # A service representing a network-accessible API
 # bound to port `9090`.
 service / on new http:Listener(9090) {
@@ -24,7 +28,11 @@ service / on new http:Listener(9090) {
     # A resource for generating greetings
     # + name - the input string name
     # + return - string name with hello message or error
-    resource function get greeting() returns boolean|error {
-        return true;
+    resource function get greeting() returns RiskResponse|error {
+     RiskResponse resp = {
+          // hasRisk is true if the country code of the IP address is not the specified country code.
+          hasRisk: true;
+     };
+     return resp;
     }
 }

@@ -28,7 +28,7 @@ service / on new http:Listener(9090) {
     # A resource for generating greetings
     # + name - the input string name
     # + return - string name with hello message or error
-    resource function get greeting() returns RiskResponse|error {
+    resource function post greeting(@http:Payload RiskRequest req) returns RiskResponse|error {
      RiskResponse resp = {
           // hasRisk is true if the country code of the IP address is not the specified country code.
           hasRisk: true

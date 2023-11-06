@@ -31,7 +31,7 @@ service / on new http:Listener(9090) {
     resource function get greeting() returns RiskResponse|error {
      RiskResponse resp = {
           // hasRisk is true if the country code of the IP address is not the specified country code.
-          hasRisk: true;
+          hasRisk: true
      };
      return resp;
     }
